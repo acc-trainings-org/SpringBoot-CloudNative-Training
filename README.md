@@ -3,17 +3,17 @@
 ## Objective
 This is a quick reference guide to understand usages of key components & capabilities in this training that trainee may require during api design and build phase. It also contains details and references to help you to getting started with initial set-up for development environemt, IDE for coding and other tool technologies which enable you to design, develop and deploy the customer-api & policy-api. We will follow following Software/API Development LifeCycle during this training.
 
-![Software Development Lifecycle](https://github.com/acc-trainings/SpringBoot-OpenShift-Training/blob/main/img/sdlc.png?raw=true)
+![Software Development Lifecycle](https://github.com/acc-trainings-org/SpringBoot-CloudNative-Training/blob/main/img/sdlc.png?raw=true)
 
 
 ## Training Schedule (**`2021-02-15 - 2021-02-26`**)
-* Day 1. Business Context, Microservices, Use Case, [API First Development](https://github.com/acc-trainings/SpringBoot-OpenShift-Training/tree/1.api-first-development)
-* Day 2. Spring Boot Basics, [Spring Boot Development](https://github.com/acc-trainings/SpringBoot-OpenShift-Training/tree/2.spring-api-development)
-* Day 3. Mongo DB Basics, [Spring Boot - Maven Development](https://github.com/acc-trainings/SpringBoot-OpenShift-Training/tree/3.spring-mongodb-development)
-* Day 4. [Microservices Communication](https://github.com/acc-trainings/SpringBoot-OpenShift-Training/tree/4.microservices-communication), Containerization & Orchestration & OpenShift 
-* Day 5. [DevOps](https://github.com/acc-trainings/SpringBoot-OpenShift-Training/tree/5.DevOps-CICD)
-* Day 6. [Spring boot Cloud Native using OpenShift Service Mesh](https://github.com/acc-trainings/SpringBoot-OpenShift-Training/tree/6.service-mesh)
-* Day 7. [Reactive Programming using Spring WebFlux](https://github.com/acc-trainings/SpringBoot-OpenShift-Training/tree/7.Reactive-Programming)
+* Day 1. Business Context, Microservices, Use Case, [API First Development](https://github.com/acc-trainings-org/SpringBoot-CloudNative-Training/tree/1.api-first-development)
+* Day 2. Spring Boot Basics, [Spring Boot Development](https://github.com/acc-trainings-org/SpringBoot-CloudNative-Training/tree/2.spring-api-development)
+* Day 3. Mongo DB Basics, [Spring Boot - Maven Development](https://github.com/acc-trainings-org/SpringBoot-CloudNative-Training/tree/3.spring-mongodb-development)
+* Day 4. [Microservices Communication](https://github.com/acc-trainings-org/SpringBoot-CloudNative-Training/tree/4.microservices-communication), Containerization & Orchestration & OpenShift 
+* Day 5. [DevOps](https://github.com/acc-trainings-org/SpringBoot-CloudNative-Training/tree/5.DevOps-CICD)
+* Day 6. [Spring boot Cloud Native using OpenShift Service Mesh](https://github.com/acc-trainings-org/SpringBoot-CloudNative-Training/tree/6.service-mesh)
+* Day 7. [Reactive Programming using Spring WebFlux](https://github.com/acc-trainings-org/SpringBoot-CloudNative-Training/tree/7.Reactive-Programming)
 
 ## Use Case
 **`customer-api`**
@@ -87,5 +87,5 @@ Few of the extensions should be pre-installed when you install Visual Studio Cod
 * Click on Extension tab from right panel on Visual Studio Code IDE.
 * Search above mentioned extensions and click on install.
 
-![Visual Studio Code Extension](https://github.com/acc-trainings/SpringBoot-OpenShift-Training/blob/main/img/vscode_extension.png?raw=true)
+![Visual Studio Code Extension](https://github.com/acc-trainings-org/SpringBoot-CloudNative-Training/blob/main/img/vscode_extension.png?raw=true)
 

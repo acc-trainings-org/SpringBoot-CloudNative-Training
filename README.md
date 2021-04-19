@@ -1,4 +1,4 @@
-# SpringBoot-OpenShift-Training
+# SpringBoot-CloudNative-Training
 
 ## Objective
 This is a quick reference guide to understand usages of key components & capabilities in this training that trainee may require during api design and build phase. It also contains details and references to help you to getting started with initial set-up for development environemt, IDE for coding and other tool technologies which enable you to design, develop and deploy the customer-api & policy-api. We will follow following Software/API Development LifeCycle during this training.

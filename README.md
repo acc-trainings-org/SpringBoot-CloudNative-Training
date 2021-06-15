@@ -75,11 +75,11 @@ To install servicemesh control plane, follow below procedures:
    oc get smcp -n acc-trainings-istio-system
    ```
 
-  The installation has finished successfully when the READY column is true.
+  The installation has finished successfully when the READY column is completed.
 
    ```javascript
        NAME           READY
-       basic          True
+       basic          11/11
    ```
 
 * Run the following command to watch the progress of the Pods during the installation process:

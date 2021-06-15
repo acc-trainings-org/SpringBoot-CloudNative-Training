@@ -111,11 +111,11 @@ Follow this procedure to add a project to the ServiceMeshMemberRoll from the com
 
 * Create a ServiceMeshMemberRoll resource in the same project as the ServiceMeshControlPlane resource, in our example that is ```acc-trainings-istio-system ```.
 
- [Click here](https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-servicemeshmemberroll-default.yaml) for location. You have to customize the value of members by replacing existing value with you application namespace i.e. ```acctrainings-<your first name>```. The resource must be named default.
+ [Click here](https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-servicemeshmemberroll-default.yaml) for location. You have to customize the value of members by replacing existing value with you application namespace i.e. ```acc-trainings-pod<x>```. The resource must be named default.
 
 * Create Service memberRoll by adding from web Console
 * Click on Installed Operators for your Project and then click Service Mesh Operator
-        ![Copy Login Command](https://github.com/acc-trainings-org/SpringBoot-OpenShift-Training/blob/6.service-mesh/img/MemberRoll.JPG?raw=true)
+        ![Copy Login Command](https://github.com/acc-trainings-org/SpringBoot-CloudNative-Training/blob/6.service-mesh/img/MemberRoll.JPG?raw=true)
   
 * Click "Istio Service Mesh Member Roll"
         ![Copy Login Command](https://github.com/acc-trainings-org/SpringBoot-OpenShift-Training/blob/6.service-mesh/img/SelectMR.JPG?raw=true)

@@ -198,22 +198,28 @@ In order to move forward with service mesh, we will need Customer-api and policy
 
 * Look at the config [here](https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/customer-api-virtual-service.yaml), it has settings routing traffic to application
 
+* checkout configuration file [here](https://github.com/acc-trainings-org/Configurations) and replace your initials at placeholder <initials>
+        
 * Run the following command to apply Virtual Service:
 
     ```javascript
         oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/customer-api-virtual-service.yaml
     ```
+     * Note - Replace Namespace and location accordingly
 
 #### **`Virtual Service for Policy API`**
 
 * Look at the config [here](https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/policy-api-virtual-service.yaml), it has settings routing traffic to application
 
+* checkout configuration file [here](https://github.com/acc-trainings-org/Configurations) and replace your initials at placeholder <initials>
+        
 * Run the following command to apply Virtual Service:
 
     ```javascript
         oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/policy-api-virtual-service.yaml
     ```
-
+    * Note - Replace Namespace and location accordingly
+        
 * Test with istio gateway path
 
 ## Traffic management

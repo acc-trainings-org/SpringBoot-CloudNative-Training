@@ -59,7 +59,7 @@ To install servicemesh control plane, follow below procedures:
 * If project is not created, you can create by running following command which will install all required operators as well.
 
    ```javascript
-       oc new-project acc-trainings-istio-system
+   oc new-project acc-trainings-istio-system
    ```
 
 * Create a ServiceMeshControlPlane file named istio-servicemeshmemberroll-default.yaml. [Click here](https://raw.githubusercontent.com/acc-trainings/SpringBoot-OpenShift-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-ServiceMeshControlPlane-installation.yaml) for location. You can customize the values as needed to match your use case.

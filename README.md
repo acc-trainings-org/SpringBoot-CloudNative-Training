@@ -134,47 +134,50 @@ Follow this procedure to add a project to the ServiceMeshMemberRoll from the com
 
 ### **`Creating Istio Ingress Gateway`** 
 
-* Look at the config [here](https://raw.githubusercontent.com/acc-trainings/SpringBoot-OpenShift-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/acctrainings-gateway.yaml), to keep it simple for demo, we will allow all http traffic
+* Look at the config [here](https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/acctrainings-gateway.yaml), to keep it simple for demo, we will allow all http traffic
 
 * Run the following command to apply gateway:
 
    ```javascript
-        oc apply -n acctrainings-<your first name> -f https://raw.githubusercontent.com/acc-trainings/SpringBoot-OpenShift-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/acctrainings-gateway.yaml
+   oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/acctrainings-gateway.yaml
    ```
+* Note - Use your namespace in place of acc-trainings e.g. - ```acc-trainings-pod1```
 
-* Note: if ```acctrainings-<your first name>``` is not yet available, use following command to create it.
-
-   ```javascript
-        oc new-project acctrainings-<your first name>
-   ```
-
-### **`Deploy Applications`**
+### **`Clear Applications`**
+Let us start with clean deployment, for that remove all the apps under namespace
+    ```javascript
+    oc delete all --selector app=customer-api
+    ```
 
 In order to move forward with service mesh, we will need Customer-api and policy-api to be deployed on your project. If these are not yet deployed, follow steps to deploy -
 
 #### **`Customer API Deployment`**
 
-* Look at the config [here](https://raw.githubusercontent.com/acc-trainings/SpringBoot-OpenShift-Training/6.service-mesh/API%20Deployments%20Configs/customer-api.yaml), it has configurations for -
+* Look at the config [here](https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/API%20Deployments%20Configs/customer-api.yaml), it has configurations for -
   * ConfigMap - The ConfigMap object provides mechanisms to inject containers with configuration data while keeping containers agnostic of OpenShift Container   Platform. A ConfigMap can be used to store fine-grained information like individual properties or coarse-grained information like entire configuration files or JSON blobs.
   * Service - An abstract way to expose an application running on a set of Pods as a network service.
   * Deployment -  Deployments describe the desired state of a particular component of an application as a Pod template.
   * Route - Configuration to create route to be exposed for your service deployed on POD.
+* checkout configuration file [here] (https://github.com/acc-trainings-org/Configurations) and replace your initials at placeholder <initials>
 
 * Run the following command to deploy customer api:
 
     ```javascript
-        oc apply -n acctrainings-<your first name> -f https://raw.githubusercontent.com/acc-trainings/SpringBoot-OpenShift-Training/6.service-mesh/API%20Deployments%20Configs/customer-api.yaml
+        oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/API%20Deployments%20Configs/customer-api.yaml
     ```
+    * Note - Replace Namespace and location accordingly
 
 #### **`Policy API Deployment`**
 
-* Look at the config [here](https://raw.githubusercontent.com/acc-trainings/SpringBoot-OpenShift-Training/6.service-mesh/API%20Deployments%20Configs/policy-api-v1.yaml)
+* Look at the config [here](https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/API%20Deployments%20Configs/policy-api-v1.yaml)
+* Checkout configuration file [here] (https://github.com/acc-trainings-org/Configurations) and replace your initials at placeholder <initials>
 
-* Run the following command to deploy customer api:
+* Run the following command to deploy policy api:
 
     ```javascript
-        oc apply -n acctrainings-<your first name> -f https://raw.githubusercontent.com/acc-trainings/SpringBoot-OpenShift-Training/6.service-mesh/API%20Deployments%20Configs/policy-api-v1.yaml
+        oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/API%20Deployments%20Configs/policy-api-v1.yaml
     ```
+      * Note - Replace Namespace and location accordingly
 
 ### **`Inject Side Car`**
 

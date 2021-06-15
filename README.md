@@ -129,7 +129,7 @@ Follow this procedure to add a project to the ServiceMeshMemberRoll from the com
 * Alternatively, copy YAML file form [here](https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-servicemeshmemberroll-default.yaml), add member name and run the following command to apply member roll:
 
    ```javascript
-        oc create -n acctrainings-istio-system-<your first name> -f <Path of your yaml file>
+   oc create -n acc-trainings-istio-system -f https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-servicemeshmemberroll-default.yaml
    ```
 
 ### **`Creating Istio Ingress Gateway`** 

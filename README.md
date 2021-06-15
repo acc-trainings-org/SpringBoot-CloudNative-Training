@@ -118,15 +118,15 @@ Follow this procedure to add a project to the ServiceMeshMemberRoll from the com
         ![Copy Login Command](https://github.com/acc-trainings-org/SpringBoot-CloudNative-Training/blob/6.service-mesh/img/MemberRoll.JPG?raw=true)
   
 * Click "Istio Service Mesh Member Roll"
-        ![Copy Login Command](https://github.com/acc-trainings-org/SpringBoot-OpenShift-Training/blob/6.service-mesh/img/SelectMR.JPG?raw=true)
+        ![Copy Login Command](https://github.com/acc-trainings-org/SpringBoot-CloudNative-Training/blob/6.service-mesh/img/SelectMR.JPG?raw=true)
 
 * Click button "Create ServiceMeshMemberRoll" to add configuration
-        ![Copy Login Command](https://github.com/acc-trainings-org/SpringBoot-OpenShift-Training/blob/6.service-mesh/img/ButtonMR.JPG?raw=true)
+        ![Copy Login Command](https://github.com/acc-trainings-org/SpringBoot-CloudNative-Training/blob/6.service-mesh/img/ButtonMR.JPG?raw=true)
 
 * Select "YAML View" and add name of your project under member section
-        ![Copy Login Command](https://github.com/acc-trainings-org/SpringBoot-OpenShift-Training/blob/6.service-mesh/img/MemberName.JPG?raw=true)
+        ![Copy Login Command](https://github.com/acc-trainings-org/SpringBoot-CloudNative-Training/blob/6.service-mesh/img/MemberName.JPG?raw=true)
 
-* Alternatively, copy YAML file form [here](https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-OpenShift-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-servicemeshmemberroll-default.yaml), add member name and run the following command to apply member roll:
+* Alternatively, copy YAML file form [here](https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-servicemeshmemberroll-default.yaml), add member name and run the following command to apply member roll:
 
    ```javascript
         oc create -n acctrainings-istio-system-<your first name> -f <Path of your yaml file>

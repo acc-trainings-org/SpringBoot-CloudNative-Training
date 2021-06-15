@@ -19,8 +19,8 @@ This is a quick reference guide with step by step instructions on how you can se
 
 ### **`Application Deployment`**
 
-* Namespace for istio system is already create  with name - ```acctrainings-istio-system-<your first name>```
-* Namespace for applications is already create  with name - ```acctrainings-<your first name>```
+* Namespace for istio system is already create  with name - ```acc-trainings-istio-system```
+* Participants will deploy Customer-api and Policy-api in allocated namespaces from ```acc-trainings-pod01``` to  ```acc-trainings-pod05```
 * Customer service is deployed using Deployments configuration in application namespace
 * Version 1 of Policy Service is deployed using Deployments configuration in application namespace
 

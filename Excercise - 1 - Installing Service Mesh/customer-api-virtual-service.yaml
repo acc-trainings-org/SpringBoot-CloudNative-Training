@@ -10,9 +10,9 @@ spec:
   http:
   - match:
     - uri:
-        prefix: /customer
+        prefix: /api/vs/customer
     route:
     - destination:
-        host: customer-api
+        host: customer-api-vs
         port:
           number: 8080

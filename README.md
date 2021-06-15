@@ -158,7 +158,7 @@ In order to move forward with service mesh, we will need Customer-api and policy
   * Service - An abstract way to expose an application running on a set of Pods as a network service.
   * Deployment -  Deployments describe the desired state of a particular component of an application as a Pod template.
   * Route - Configuration to create route to be exposed for your service deployed on POD.
-* checkout configuration file [here] (https://github.com/acc-trainings-org/Configurations) and replace your initials at placeholder <initials>
+* checkout configuration file [here](https://github.com/acc-trainings-org/Configurations) and replace your initials at placeholder <initials>
 
 * Run the following command to deploy customer api:
 
@@ -170,7 +170,7 @@ In order to move forward with service mesh, we will need Customer-api and policy
 #### **`Policy API Deployment`**
 
 * Look at the config [here](https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/API%20Deployments%20Configs/policy-api-v1.yaml)
-* Checkout configuration file [here] (https://github.com/acc-trainings-org/Configurations) and replace your initials at placeholder <initials>
+* Checkout configuration file [here](https://github.com/acc-trainings-org/Configurations) and replace your initials at placeholder <initials>
 
 * Run the following command to deploy policy api:
 

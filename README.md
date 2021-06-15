@@ -196,22 +196,22 @@ In order to move forward with service mesh, we will need Customer-api and policy
 
 #### **`Virtual Service for Customer API`**
 
-* Look at the config [here](https://raw.githubusercontent.com/acc-trainings/SpringBoot-OpenShift-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/customer-api-virtual-service.yaml), it has settings routing traffic to application
+* Look at the config [here](https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/customer-api-virtual-service.yaml), it has settings routing traffic to application
 
 * Run the following command to apply Virtual Service:
 
     ```javascript
-        oc apply -n acctrainings-<your first name> -f https://raw.githubusercontent.com/acc-trainings/SpringBoot-OpenShift-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/customer-api-virtual-service.yaml
+        oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/customer-api-virtual-service.yaml
     ```
 
 #### **`Virtual Service for Policy API`**
 
-* Look at the config [here](https://raw.githubusercontent.com/acc-trainings/SpringBoot-OpenShift-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/policy-api-virtual-service.yaml), it has settings routing traffic to application
+* Look at the config [here](https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/policy-api-virtual-service.yaml), it has settings routing traffic to application
 
 * Run the following command to apply Virtual Service:
 
     ```javascript
-        oc apply -n acctrainings-<your first name> -f https://raw.githubusercontent.com/acc-trainings/SpringBoot-OpenShift-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/policy-api-virtual-service.yaml
+        oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/policy-api-virtual-service.yaml
     ```
 
 * Test with istio gateway path

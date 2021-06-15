@@ -104,6 +104,7 @@ To install servicemesh control plane, follow below procedures:
         jaeger-896945cbc-7lqrr                   2/2     Running            0          11h
         kiali-78d9c5b87c-snjzh                   1/1     Running            0          22h
         prometheus-6dff867c97-gr2n5              2/2     Running            0          28h
+        
       ```
 
 ### **`Creating the Red Hat OpenShift Service Mesh member roll`**  

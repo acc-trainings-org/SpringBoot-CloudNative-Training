@@ -1,10 +1,10 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: customer-api-virtual-service
+  name: customer-api-vs-virtual-service
 spec:
   hosts:
-  - '*.apps.awsopenshift.ne-innovation.com'
+  - '*.apps.azureneocp.neinnovation-ocp.com'
   gateways:
   - acctrainings-gateway
   http:

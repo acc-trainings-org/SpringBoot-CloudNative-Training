@@ -66,13 +66,13 @@ To install servicemesh control plane, follow below procedures:
 * Run the following command to deploy the control plane:
 
    ```javascript
-       oc create -n acc-trainings-istio-system -f https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-ServiceMeshControlPlane-installation.yaml
+   oc create -n acc-trainings-istio-system -f https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-ServiceMeshControlPlane-installation.yaml
    ```
 
 * Execute the following command to see the status of the control plane installation.
 
    ```javascript
-       oc get smcp -n acc-trainings-istio-system
+   oc get smcp -n acc-trainings-istio-system
    ```
 
   The installation has finished successfully when the READY column is true.
@@ -85,7 +85,7 @@ To install servicemesh control plane, follow below procedures:
 * Run the following command to watch the progress of the Pods during the installation process:
 
    ```javascript
-       oc get pods -n acc-trainings-istio-system -w
+   oc get pods -n acc-trainings-istio-system -w
     ```
 
   Examlpe output

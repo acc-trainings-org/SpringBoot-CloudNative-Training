@@ -52,7 +52,7 @@ spec:
       containers:
       - name: policy-api-vs
         image: quay.io/acctrainings/policy-api-gold:release-1.0.0
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         envFrom:
           - configMapRef:
               name: policy-api-vs

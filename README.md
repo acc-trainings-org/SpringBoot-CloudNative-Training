@@ -31,7 +31,7 @@ To install service mesh, we will be using OpenShift CLI. Follow steps to login t
 ### **`Login to cluster using OpenShift CLI`**
 
 * open command prompt and change directory to location where OpenShift CLI is downloaded.
-* Login to OpenShift cluster by [clicking here](https://oauth-openshift.apps.awsopenshift.ne-innovation.com/oauth/authorize?client_id=console&redirect_uri=https%3A%2F%2Fconsole-openshift-console.apps.awsopenshift.ne-innovation.com%2Fauth%2Fcallback&response_type=code&scope=user%3Afull&state=89ae6812) 
+* Login to OpenShift cluster by [clicking here](https://console-openshift-console.apps.azureneocp.neinnovation-ocp.com) 
 * Select oktaidp to login and provide User Name and Password used to setup Okta account.
 * Click top right corner on arrow next to your name and click "Copy Login Command".
         ![Copy Login Command](https://github.com/acc-trainings/SpringBoot-OpenShift-Training/blob/6.service-mesh/img/CopyLoginCommand.JPG?raw=true)

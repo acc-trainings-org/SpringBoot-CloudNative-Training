@@ -45,7 +45,7 @@ To install service mesh, we will be using OpenShift CLI. Follow steps to login t
 
 The Service Mesh installation process uses the OperatorHub to install the ServiceMeshControlPlane custom resource definition within the openshift-operators project. The Red Hat OpenShift Service Mesh defines and monitors the ServiceMeshControlPlane related to the deployment, update, and deletion of the control plane.
 
-Starting with Red Hat OpenShift Service Mesh 1.1.11, you must install the Elasticsearch Operator, the Jaeger Operator, and the Kiali Operator before the Red Hat OpenShift Service Mesh Operator can install the control plane.
+Starting with Red Hat OpenShift Service Mesh, you must install the Elasticsearch Operator, the Jaeger Operator, and the Kiali Operator before the Red Hat OpenShift Service Mesh Operator can install the control plane.
 
 All the Operators will be installed as part of project creation. Please confim that istio system project:  ```acc-trainings-istio-system``` has all the operators in ready state.
 
@@ -62,11 +62,11 @@ To install servicemesh control plane, follow below procedures:
    oc new-project acc-trainings-istio-system
    ```
 
-* Create a ServiceMeshControlPlane file named istio-servicemeshmemberroll-default.yaml. [Click here](https://raw.githubusercontent.com/acc-trainings/SpringBoot-OpenShift-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-ServiceMeshControlPlane-installation.yaml) for location. You can customize the values as needed to match your use case.
+* Create a ServiceMeshControlPlane file named istio-servicemeshmemberroll-default.yaml. [Click here](https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-ServiceMeshControlPlane-installation.yaml) for location. You can customize the values as needed to match your use case.
 * Run the following command to deploy the control plane:
 
    ```javascript
-   oc create -n acc-trainings-istio-system -f https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-ServiceMeshControlPlane-installation.yaml
+   oc create -n acc-trainings-istio-system -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-ServiceMeshControlPlane-installation.yaml
    ```
 
 * Execute the following command to see the status of the control plane installation.
@@ -110,8 +110,7 @@ To install servicemesh control plane, follow below procedures:
 Follow this procedure to add a project to the ServiceMeshMemberRoll from the command line.
 
 * Create a ServiceMeshMemberRoll resource in the same project as the ServiceMeshControlPlane resource, in our example that is ```acc-trainings-istio-system ```.
-
- [Click here](https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-servicemeshmemberroll-default.yaml) for location. You have to customize the value of members by replacing existing value with you application namespace i.e. ```acc-trainings-pod<x>```. The resource must be named default.
+*
 
 * Create Service memberRoll by adding from web Console
 * Click on Installed Operators for your Project and then click Service Mesh Operator
@@ -126,23 +125,49 @@ Follow this procedure to add a project to the ServiceMeshMemberRoll from the com
 * Select "YAML View" and add name of your project under member section
         ![Copy Login Command](https://github.com/acc-trainings-org/SpringBoot-CloudNative-Training/blob/6.service-mesh/img/MemberName.JPG?raw=true)
 
-* Alternatively, copy YAML file form [here](https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-servicemeshmemberroll-default.yaml), add member name and run the following command to apply member roll:
+* Alternatively, copy YAML file form [here](https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-servicemeshmemberroll-default.yaml), add member name and run the following command to apply member roll:
 
    ```javascript
-   oc create -n acc-trainings-istio-system -f https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-servicemeshmemberroll-default.yaml
+   oc create -n acc-trainings-istio-system -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-servicemeshmemberroll-default.yaml
    ```
 
-### **`Creating Istio Ingress Gateway`** 
+### **`Creating Istio Gateway`** 
 
-* Look at the config [here](https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/acctrainings-gateway.yaml), to keep it simple for demo, we will allow all http traffic
+* Look at the config [here](https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/acctrainings-gateway.yaml), to keep it simple for demo, we will allow all http traffic
 
 * Run the following command to apply gateway:
 
+** For main namespace
    ```javascript
-   oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/acctrainings-gateway.yaml
+   oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/acctrainings-gateway.yaml
    ```
-* Note - Use your namespace in place of acc-trainings e.g. - ```acc-trainings-pod1```
 
+** For pod01 namespace
+   ```javascript
+   oc apply -n acc-trainings-pod01 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod01/Excercise%20-%201%20-%20Installing%20Service%20Mesh/acctrainings-gateway.yaml
+   ```
+   
+** For pod02 namespace
+   ```javascript
+   oc apply -n acc-trainings-pod02 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod02/Excercise%20-%201%20-%20Installing%20Service%20Mesh/acctrainings-gateway.yaml
+   ```
+   
+** For pod03 namespace
+   ```javascript
+   oc apply -n acc-trainings-pod03 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod03/Excercise%20-%201%20-%20Installing%20Service%20Mesh/acctrainings-gateway.yaml
+   ```
+   
+** For pod04 namespace
+   ```javascript
+   oc apply -n acc-trainings-pod4 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod04/Excercise%20-%201%20-%20Installing%20Service%20Mesh/acctrainings-gateway.yaml
+   ```
+   
+** For pod05 namespace
+   ```javascript
+   oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/Excercise%20-%201%20-%20Installing%20Service%20Mesh/acctrainings-gateway.yaml
+   ```
+   
+   
 ### **`Clear Applications`**
 Let us start with clean deployment, for that remove all the apps under namespace
     ```javascript

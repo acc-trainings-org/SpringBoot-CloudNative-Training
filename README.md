@@ -167,42 +167,83 @@ Follow this procedure to add a project to the ServiceMeshMemberRoll from the com
    oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/Excercise%20-%201%20-%20Installing%20Service%20Mesh/acctrainings-gateway.yaml
    ```
    
-   
-### **`Clear Applications`**
-Let us start with clean deployment, for that remove all the apps under namespace
-    ```javascript
-    oc delete all --selector app=customer-api
-    ```
+#### **`Customer API Deployment`**
 
 In order to move forward with service mesh, we will need Customer-api and policy-api to be deployed on your project. If these are not yet deployed, follow steps to deploy -
 
-#### **`Customer API Deployment`**
-
-* Look at the config [here](https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/API%20Deployments%20Configs/customer-api.yaml), it has configurations for -
+* Look at the config [here](https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/API%20Deployments%20Configs/customer-api.yaml), it has configurations for -
   * ConfigMap - The ConfigMap object provides mechanisms to inject containers with configuration data while keeping containers agnostic of OpenShift Container   Platform. A ConfigMap can be used to store fine-grained information like individual properties or coarse-grained information like entire configuration files or JSON blobs.
   * Service - An abstract way to expose an application running on a set of Pods as a network service.
   * Deployment -  Deployments describe the desired state of a particular component of an application as a Pod template.
   * Route - Configuration to create route to be exposed for your service deployed on POD.
-* checkout configuration file [here](https://github.com/acc-trainings-org/Configurations) and replace your initials at placeholder <initials>
 
 * Run the following command to deploy customer api:
 
+** For main namespace
     ```javascript
-        oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/API%20Deployments%20Configs/customer-api.yaml
+        oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/API%20Deployments%20Configs/customer-api.yaml
     ```
-    * Note - Replace Namespace and location accordingly
+
+** For pod01 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod01 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod01/API%20Deployments%20Configs/customer-api.yaml
+    ```
+    
+** For pod02 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod02 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod02/API%20Deployments%20Configs/customer-api.yaml
+    ```
+    
+ ** For pod03 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod03 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod03/API%20Deployments%20Configs/customer-api.yaml
+    ```
+    
+  ** For pod04 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod04 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod04/API%20Deployments%20Configs/customer-api.yaml
+    ```
+    
+  ** For pod05 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/API%20Deployments%20Configs/customer-api.yaml
+    ```
 
 #### **`Policy API Deployment`**
 
-* Look at the config [here](https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/API%20Deployments%20Configs/policy-api-v1.yaml)
-* Checkout configuration file [here](https://github.com/acc-trainings-org/Configurations) and replace your initials at placeholder <initials>
-
+* Look at the config [here](https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/API%20Deployments%20Configs/policy-api-v1.yaml)
 * Run the following command to deploy policy api:
 
+** For main namespace
     ```javascript
-        oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/API%20Deployments%20Configs/policy-api-v1.yaml
+        oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/API%20Deployments%20Configs/policy-api-v1.yaml
     ```
-      * Note - Replace Namespace and location accordingly
+    
+** For pod01 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod01 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod01/API%20Deployments%20Configs/policy-api-v1.yaml
+    ```
+  
+** For pod02 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod02 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod02/API%20Deployments%20Configs/policy-api-v1.yaml
+    ```
+    
+** For pod03 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod03 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod03/API%20Deployments%20Configs/policy-api-v1.yaml
+    ```
+  
+** For pod04 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod04 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod04/API%20Deployments%20Configs/policy-api-v1.yaml
+    ```
+    
+** For pod05 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/API%20Deployments%20Configs/policy-api-v1.yaml
+    ```
+   
 
 ### **`Inject Side Car`**
 
@@ -221,29 +262,75 @@ In order to move forward with service mesh, we will need Customer-api and policy
 
 #### **`Virtual Service for Customer API`**
 
-* Look at the config [here](https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/customer-api-virtual-service.yaml), it has settings routing traffic to application
-
-* checkout configuration file [here](https://github.com/acc-trainings-org/Configurations) and replace your initials at placeholder <initials>
+* Look at the config [here](https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/customer-api-virtual-service.yaml), it has settings routing traffic to application
         
 * Run the following command to apply Virtual Service:
 
+** For main namespace
     ```javascript
-        oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/customer-api-virtual-service.yaml
+        oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/customer-api-virtual-service.yaml
     ```
-     * Note - Replace Namespace and location accordingly
+
+** For pod01 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod01 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod01/Excercise%20-%201%20-%20Installing%20Service%20Mesh/customer-api-virtual-service.yaml
+    ```
+    
+ ** For pod02 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod02 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod02/Excercise%20-%201%20-%20Installing%20Service%20Mesh/customer-api-virtual-service.yaml
+    ```
+    
+ ** For pod03 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod03 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod03/Excercise%20-%201%20-%20Installing%20Service%20Mesh/customer-api-virtual-service.yaml
+    ```
+    
+ ** For pod04 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod04 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod04/Excercise%20-%201%20-%20Installing%20Service%20Mesh/customer-api-virtual-service.yaml
+    ```
+    
+ ** For pod05 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/Excercise%20-%201%20-%20Installing%20Service%20Mesh/customer-api-virtual-service.yaml
+    ```
 
 #### **`Virtual Service for Policy API`**
 
-* Look at the config [here](https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/policy-api-virtual-service.yaml), it has settings routing traffic to application
-
-* checkout configuration file [here](https://github.com/acc-trainings-org/Configurations) and replace your initials at placeholder <initials>
+* Look at the config [here](https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/policy-api-virtual-service.yaml), it has settings routing traffic to application
         
 * Run the following command to apply Virtual Service:
 
+** For main namespace
     ```javascript
-        oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/SpringBoot-CloudNative-Training/6.service-mesh/Excercise%20-%201%20-%20Installing%20Service%20Mesh/policy-api-virtual-service.yaml
+        oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/policy-api-virtual-service.yaml
     ```
-    * Note - Replace Namespace and location accordingly
+
+** For pod01 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod01 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod01/Excercise%20-%201%20-%20Installing%20Service%20Mesh/policy-api-virtual-service.yaml
+    ```
+    
+** For pod02 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod02 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod02/Excercise%20-%201%20-%20Installing%20Service%20Mesh/policy-api-virtual-service.yaml
+    ```
+    
+** For pod03 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod03 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod03/Excercise%20-%201%20-%20Installing%20Service%20Mesh/policy-api-virtual-service.yaml
+    ```
+    
+** For pod4 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod04 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod04/Excercise%20-%201%20-%20Installing%20Service%20Mesh/policy-api-virtual-service.yaml
+    ```
+    
+ ** For pod05 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/Excercise%20-%201%20-%20Installing%20Service%20Mesh/policy-api-virtual-service.yaml
+    ```
         
 * Test with istio gateway path
 
@@ -260,12 +347,38 @@ For this session, we will focus on Load balancing, Network resilience and testin
 ### **`Deploy version 2 of Policy-api`**
 
 * To observe load balancing, we will deploy policy-api-v2.
-* Look at the config [here](https://raw.githubusercontent.com/acc-trainings/SpringBoot-OpenShift-Training/6.service-mesh/Excercise%20-%202%20-%20Load%20Balancing/policy-api-v2.yaml)
+* Look at the config [here](https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%202%20-%20Load%20Balancing/policy-api-v2.yaml)
 
 * Run the following command to deploy policy-api-v2:
 
+** For main namespace
     ```javascript
-        oc apply -n acctrainings-<your first name> -f https://raw.githubusercontent.com/acc-trainings/SpringBoot-OpenShift-Training/6.service-mesh/Excercise%20-%202%20-%20Load%20Balancing/policy-api-v2.yaml
+        oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%202%20-%20Load%20Balancing/policy-api-v2.yaml
+    ```
+    
+** For pod01 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod01 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod01/Excercise%20-%202%20-%20Load%20Balancing/policy-api-v2.yaml
+    ```
+    
+** For pod02 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod02 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod02/Excercise%20-%202%20-%20Load%20Balancing/policy-api-v2.yaml
+    ```
+    
+** For pod03 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod03 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod03/Excercise%20-%202%20-%20Load%20Balancing/policy-api-v2.yaml
+    ```
+    
+** For pod04 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod04 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod04/Excercise%20-%202%20-%20Load%20Balancing/policy-api-v2.yaml
+    ```
+    
+** For pod05 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/Excercise%20-%202%20-%20Load%20Balancing/policy-api-v2.yaml
     ```
 
 * Start refresing browser to see V1 and V2 of the policy service bringing data alternativly, this is default Round Robin behaviour for load balancing.
@@ -273,12 +386,37 @@ For this session, we will focus on Load balancing, Network resilience and testin
 ### **`Apply Destination Rule`**
 
 * Enable Destination Rule to Observe Random and Least Requests load balancing behaviour.
-* Look at the config [here](https://raw.githubusercontent.com/acc-trainings/SpringBoot-OpenShift-Training/6.service-mesh/Excercise%20-%202%20-%20Load%20Balancing/policy-service-destination-rule.yaml)
+* Look at the config [here](https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%202%20-%20Load%20Balancing/policy-service-destination-rule.yaml)
+* Run the following command to deploy destination rule:
 
-* Run the following command to deploy policy-api-v2:
-
+** For main namespace
     ```javascript
-        oc apply -n acctrainings-<your first name> -f https://raw.githubusercontent.com/acc-trainings/SpringBoot-OpenShift-Training/6.service-mesh/Excercise%20-%202%20-%20Load%20Balancing/policy-service-destination-rule.yaml
+        oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%202%20-%20Load%20Balancing/policy-service-destination-rule.yaml
+    ```
+    
+** For pod01 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod01 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod01/Excercise%20-%202%20-%20Load%20Balancing/policy-service-destination-rule.yaml
+    ```
+    
+** For pod02 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod02 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod02/Excercise%20-%202%20-%20Load%20Balancing/policy-service-destination-rule.yaml
+    ```
+    
+** For pod03 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod03 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod03/Excercise%20-%202%20-%20Load%20Balancing/policy-service-destination-rule.yaml
+    ```
+    
+** For pod04 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod04 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod04/Excercise%20-%202%20-%20Load%20Balancing/policy-service-destination-rule.yaml
+    ```
+    
+** For pod05 namespace
+    ```javascript
+        oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/Excercise%20-%202%20-%20Load%20Balancing/policy-service-destination-rule.yaml
     ```
 
 * Start refresing browser to see V1 and V2 of the policy service bringing data randomly.

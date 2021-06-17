@@ -180,40 +180,37 @@ In order to move forward with service mesh, we will need Customer-api and policy
 * Run the following command to deploy customer api:
 
 ** For main namespace
-
-    ```javascript
-        oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/API%20Deployments%20Configs/customer-api.yaml
-    ```
+```javascript
+oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/API%20Deployments%20Configs/customer-api.yaml
+```
 
 ** For pod01 namespace
-
-    ```javascript
-        oc apply -n acc-trainings-pod01 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod01/API%20Deployments%20Configs/customer-api.yaml
-    ```
+```javascript
+oc apply -n acc-trainings-pod01 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod01/API%20Deployments%20Configs/customer-api.yaml
+```
     
 ** For pod02 namespace
-
-    ```javascript
-        oc apply -n acc-trainings-pod02 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod02/API%20Deployments%20Configs/customer-api.yaml
-    ```
+```javascript
+ oc apply -n acc-trainings-pod02 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod02/API%20Deployments%20Configs/customer-api.yaml
+```
     
  ** For pod03 namespace
  
-    ```javascript
-        oc apply -n acc-trainings-pod03 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod03/API%20Deployments%20Configs/customer-api.yaml
-    ```
+ ```javascript
+ oc apply -n acc-trainings-pod03 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod03/API%20Deployments%20Configs/customer-api.yaml
+ ```
     
-  ** For pod04 namespace
+ ** For pod04 namespace
   
-    ```javascript
-        oc apply -n acc-trainings-pod04 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod04/API%20Deployments%20Configs/customer-api.yaml
-    ```
+ ```javascript
+ oc apply -n acc-trainings-pod04 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod04/API%20Deployments%20Configs/customer-api.yaml
+ ```
     
-  ** For pod05 namespace
+ ** For pod05 namespace
   
-    ```javascript
-        oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/API%20Deployments%20Configs/customer-api.yaml
-    ```
+ ```javascript
+ oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/API%20Deployments%20Configs/customer-api.yaml
+ ```
 
 #### **`Policy API Deployment`**
 

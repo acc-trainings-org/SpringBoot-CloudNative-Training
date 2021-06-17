@@ -464,20 +464,20 @@ oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainin
             gateways:
                 - acctrainings-gateway
             hosts:
-                - '*.apps.awsopenshift.ne-innovation.com'
+                - '*.apps.azureneocp.neinnovation-ocp.com'
             http:
                 - match:
                     - uri:
-                        prefix: /policy
+                        prefix: /api/main/policy
                 route:
                     - destination:
-                        host: policy-api
+                        host: policy-api-main
                         port:
                         number: 8080
                         subset: v1
                     weight: 80
                     - destination:
-                        host: policy-api
+                        host: policy-api-main
                         port:
                         number: 8080
                         subset: v2
@@ -486,22 +486,48 @@ oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainin
 
 * Alternativey delete ```policy-api-virtual-service``` and run following command to add new virtual service
 
-    ```javascript
-        oc apply -n acctrainings-<your first name> -f https://raw.githubusercontent.com/acc-trainings/SpringBoot-OpenShift-Training/6.service-mesh/Excercise%20-%202%20-%20Load%20Balancing/policy-service-virtual-weighted-load-balancing.yaml
-    ```
+** For main namespace
+
+```javascript
+oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%202%20-%20Load%20Balancing/policy-service-virtual-weighted-load-balancing.yaml
+```
+
+** For pod01 namespace
+
+```javascript
+oc apply -n acc-trainings-pod01 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod01/Excercise%20-%202%20-%20Load%20Balancing/policy-service-virtual-weighted-load-balancing.yaml
+```
+
+** For pod02 namespace
+
+```javascript
+oc apply -n acc-trainings-pod02 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod02/Excercise%20-%202%20-%20Load%20Balancing/policy-service-virtual-weighted-load-balancing.yaml
+```
+
+** For pod03 namespace
+
+```javascript
+oc apply -n acc-trainings-pod03 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod03/Excercise%20-%202%20-%20Load%20Balancing/policy-service-virtual-weighted-load-balancing.yaml
+```
+
+** For pod04 namespace
+
+```javascript
+oc apply -n acc-trainings-pod04 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod04/Excercise%20-%202%20-%20Load%20Balancing/policy-service-virtual-weighted-load-balancing.yaml
+```
+
+** For pod05 namespace
+
+```javascript
+oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/Excercise%20-%202%20-%20Load%20Balancing/policy-service-virtual-weighted-load-balancing.yaml
+```
 
 * Edit policy-api destination rules to remove trafficPolicy
 
     ```javascript
-            spec:
-            host: policy-api
-            subsets:
-                - labels:
-                    version: v1
-                name: v1
-                - labels:
-                    version: v2
-                name: v2
+  trafficPolicy:
+    loadBalancer:
+      simple: RANDOM #ROUND_ROBIN #Load Balancing
     ```
 
 * Refresh Policy-api service browser to see most of the request are going to v1 of the service
@@ -512,22 +538,48 @@ oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainin
 
 * Inject delays using Virtual service configuration for Customer-api
 * Delete ```customer-api-virtual-service```
-* Look at fault section in the config [here](https://raw.githubusercontent.com/acc-trainings/SpringBoot-OpenShift-Training/6.service-mesh/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/customer-service-virtual-service-fault-injection.yaml).
+* Look at fault section in the config [here](https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/customer-service-virtual-service-fault-injection.yaml).
 
 * Run the following command to apply fault injection configuration:
 
-    ```javascript
-        oc apply -n acctrainings-<your first name> -f https://raw.githubusercontent.com/acc-trainings/SpringBoot-OpenShift-Training/6.service-mesh/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/customer-service-virtual-service-fault-injection.yaml
-    ```
+** For main namespace
+```javascript
+oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/customer-service-virtual-service-fault-injection.yaml
+```
+
+** For pod01 namespace
+```javascript
+oc apply -n acc-trainings-pod01 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod01/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/customer-service-virtual-service-fault-injection.yaml
+```
+
+** For pod02 namespace
+```javascript
+oc apply -n acc-trainings-pod02 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod02/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/customer-service-virtual-service-fault-injection.yaml
+```
+
+** For pod03 namespace
+```javascript
+oc apply -n acc-trainings-pod03 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod03/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/customer-service-virtual-service-fault-injection.yaml
+```
+
+** For pod04 namespace
+```javascript
+oc apply -n acc-trainings-pod04 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod04/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/customer-service-virtual-service-fault-injection.yaml
+```
+
+** For pod05 namespace
+```javascript
+oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/customer-service-virtual-service-fault-injection.yaml
+```
 
 * Start refresing browser for policy-api to see 7s delay in response.
 
-* Removed ```gateways``` section as now we do not want to expose customer-api to external world, virtual service  should look like below
+* Removed ```gateways``` section as now we do not want to expose customer-api to external world, virtual service should look like below
 
     ```javascript
             spec:
             hosts:
-            - customer-api
+            - customer-api-main
             http:
             - fault:
                 delay:
@@ -536,7 +588,7 @@ oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainin
                     value: 100
                 route:
                 - destination:
-                    host: customer-api
+                    host: customer-api-main
     ```
 
 * Refresh Customer-api browser
@@ -555,9 +607,35 @@ oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainin
 
 * Alternativey delete ```policy-api-virtual-service``` and run following command to add new virtual service with timeout and retry configuration
 
-    ```javascript
-        oc apply -n acctrainings-<your first name> -f https://raw.githubusercontent.com/acc-trainings/SpringBoot-OpenShift-Training/6.service-mesh/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/Policy-service-virtual-service-timeout.yaml
-    ```
+** For main namespace
+```javascript
+oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/Policy-service-virtual-service-timeout.yaml
+```
+
+** For pod01 namespace
+```javascript
+oc apply -n acc-trainings-pod01 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod01/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/Policy-service-virtual-service-timeout.yaml
+```
+
+** For pod02 namespace
+```javascript
+oc apply -n acc-trainings-pod02 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod02/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/Policy-service-virtual-service-timeout.yaml
+```
+
+** For pod03 namespace
+```javascript
+oc apply -n acc-trainings-pod03 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod03/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/Policy-service-virtual-service-timeout.yaml
+```
+
+** For pod04 namespace
+```javascript
+oc apply -n acc-trainings-pod04 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod04/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/Policy-service-virtual-service-timeout.yaml
+```
+
+** For pod05 namespace
+```javascript
+oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/Policy-service-virtual-service-timeout.yaml
+```
 
 * You will observe policy-api will timeout as we have delayed customer-api call by 7 second
 * Play around by changing timeouts and delay in both services

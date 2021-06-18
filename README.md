@@ -19,7 +19,7 @@ This is a quick reference guide with step by step instructions on how you can se
 
 ### **`Application Deployment`**
 
-* Namespace for istio system is already create  with name - ```acc-trainings-istio-system```
+* Namespace for istio system is already create  with name - ```acc-trainings-main-istio-system```
 * Participants will deploy Customer-api and Policy-api in allocated namespaces from ```acc-trainings-pod01``` to  ```acc-trainings-pod05```
 * Customer service is deployed using Deployments configuration in application namespace
 * Version 1 of Policy Service is deployed using Deployments configuration in application namespace
@@ -47,7 +47,7 @@ The Service Mesh installation process uses the OperatorHub to install the Servic
 
 Starting with Red Hat OpenShift Service Mesh, you must install the Elasticsearch Operator, the Jaeger Operator, and the Kiali Operator before the Red Hat OpenShift Service Mesh Operator can install the control plane.
 
-All the Operators will be installed as part of project creation. Please confim that istio system project:  ```acc-trainings-istio-system``` has all the operators in ready state.
+All the Operators will be installed as part of project creation. Please confim that istio system project:  ```acc-trainings-main-istio-system``` has all the operators in ready state.
 
 You should see following screen in OpenShift console where all operators are installed state.
       ![InstalledOperators](https://github.com/acc-trainings/SpringBoot-OpenShift-Training/blob/6.service-mesh/img/OperatorsInstalled.JPG)
@@ -59,20 +59,20 @@ To install servicemesh control plane, follow below procedures:
 * If project is not created, you can create by running following command which will install all required operators as well.
 
    ```javascript
-   oc new-project acc-trainings-istio-system
+   oc new-project acc-trainings-main-istio-system
    ```
 
 * Create a ServiceMeshControlPlane file named istio-servicemeshmemberroll-default.yaml. [Click here](https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-ServiceMeshControlPlane-installation.yaml) for location. You can customize the values as needed to match your use case.
 * Run the following command to deploy the control plane:
 
    ```javascript
-   oc create -n acc-trainings-istio-system -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-ServiceMeshControlPlane-installation.yaml
+   oc create -n acc-trainings-main-istio-system -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-ServiceMeshControlPlane-installation.yaml
    ```
 
 * Execute the following command to see the status of the control plane installation.
 
    ```javascript
-   oc get smcp -n acc-trainings-istio-system
+   oc get smcp -n acc-trainings-main-istio-system
    ```
 
   The installation has finished successfully when the READY column is completed.
@@ -81,11 +81,13 @@ To install servicemesh control plane, follow below procedures:
        NAME           READY
        basic          11/11
    ```
+   
+   
 
 * Run the following command to watch the progress of the Pods during the installation process:
 
    ```javascript
-   oc get pods -n acc-trainings-istio-system -w
+   oc get pods -n acc-trainings-main-istio-system -w
     ```
 
   Examlpe output
@@ -109,7 +111,7 @@ To install servicemesh control plane, follow below procedures:
 
 Follow this procedure to add a project to the ServiceMeshMemberRoll from the command line.
 
-* Create a ServiceMeshMemberRoll resource in the same project as the ServiceMeshControlPlane resource, in our example that is ```acc-trainings-istio-system ```.
+* Create a ServiceMeshMemberRoll resource in the same project as the ServiceMeshControlPlane resource, in our example that is ```acc-trainings-main-istio-system ```.
 *
 
 * Create Service memberRoll by adding from web Console
@@ -128,7 +130,7 @@ Follow this procedure to add a project to the ServiceMeshMemberRoll from the com
 * Alternatively, copy YAML file form [here](https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-servicemeshmemberroll-default.yaml), add member name and run the following command to apply member roll:
 
    ```javascript
-   oc create -n acc-trainings-istio-system -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-servicemeshmemberroll-default.yaml
+   oc create -n acc-trainings-main-istio-system -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-servicemeshmemberroll-default.yaml
    ```
 
 ### **`Creating Istio Gateway`** 

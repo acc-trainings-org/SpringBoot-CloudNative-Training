@@ -112,8 +112,6 @@ To install servicemesh control plane, follow below procedures:
 Follow this procedure to add a project to the ServiceMeshMemberRoll from the command line.
 
 * Create a ServiceMeshMemberRoll resource in the same project as the ServiceMeshControlPlane resource, in our example that is ```acc-trainings-main-istio-system ```.
-*
-
 * Create Service memberRoll by adding from web Console
 * Click on Installed Operators for your Project and then click Service Mesh Operator
         ![Copy Login Command](https://github.com/acc-trainings-org/SpringBoot-CloudNative-Training/blob/6.service-mesh/img/MemberRoll.JPG?raw=true)

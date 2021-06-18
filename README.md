@@ -24,7 +24,7 @@ This is a quick reference guide with step by step instructions on how you can se
 * Customer service is deployed using Deployments configuration in application namespace
 * Version 1 of Policy Service is deployed using Deployments configuration in application namespace
 
-## Installing Service Mesh
+## Exercise 1 - Installing Service Mesh
 
 To install service mesh, we will be using OpenShift CLI. Follow steps to login to OpenShift cluster using OpenShift CLI.
 
@@ -354,7 +354,7 @@ oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainin
         
 * Test with istio gateway path
 
-## Traffic management
+## Exercise 2 - Traffic Management
 
 Istio’s traffic routing rules let you easily control the flow of traffic and API calls between services. Istio simplifies configuration of service-level properties like circuit breakers, timeouts, and retries, and makes it easy to set up important tasks like A/B testing, canary rollouts, and staged rollouts with percentage-based traffic splits. It also provides out-of-box failure recovery features that help make your application more robust against failures of dependent services or the network.
 
@@ -532,7 +532,7 @@ oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainin
 
 * Refresh Policy-api service browser to see most of the request are going to v1 of the service
 
-### Network resilience and testing
+### Exercise 3 - Network resilience and testing
 
 ### **`Fault Injection and testing`**
 

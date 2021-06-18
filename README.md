@@ -572,7 +572,7 @@ oc apply -n acc-trainings-pod04 -f https://raw.githubusercontent.com/acc-trainin
 oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/customer-service-virtual-service-fault-injection.yaml
 ```
 
-* Start refresing browser for policy-api to see 7s delay in response.
+* Start refresing browser for customer-api to see 7s delay in response.
 
 * Removed ```gateways``` section as now we do not want to expose customer-api to external world, virtual service should look like below
 

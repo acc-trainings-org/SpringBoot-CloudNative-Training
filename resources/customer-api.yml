@@ -1,86 +1,94 @@
-openapi: 3.0.2
-
+openapi: '3.0.2'
 info:
   title: Customer API
-  version: '1.0.0'
+  version: '1.0'
   contact:
     name: Accenture
     email: contact@example.com
-    url: https://example.com/
+    url: http://example.com
+    
+servers:
+  - url: https://api.server.test/v1
 
 tags:
   - name: Customer API
-    description: Customer Service related operations
-    
+    description: Create and Fetch Customer
+
+
 paths:
   /customer:
     post:
-      description: Create Customer
-      summary: Create Customer
-      tags: [ 'Customer API' ]
+      description: Create Customer 
+      summary: Create customer for given request
+      tags:
+        - "Customer API"
       operationId: createCustomer
       requestBody:
-        description: "Create Customer"
+        description: create customer schema 
         content:
-         application/json:
-          schema:
-            $ref: '#/components/schemas/Customer'   
-      responses:
-        '200':
-          description: Customer Create Successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Customer'
-        '500':
-           description: Internal Server
-
-  /customer/{id}:
-    get:
-      operationId: getCustomer
-      parameters:
-        - name: id
-          in: path
-          description: find customer
-          required: true
-          schema: 
-            type: string
-          
-      summary: Get customer details
-      tags: [ 'Customer API' ]
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'     
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Customer'
+                $ref: '#/components/schemas/Customer' 
         '500':
-          description: Internal Server Error
-        '404':
-          description: Not Found
+          description: Internal Server Error 
+  /customer/{id}:        
+    get:
+      operationId: getCustomer
+      description: Fetch customer details
+      parameters:
+        - name: id
+          in: path
+          description: fetch customer
+          required: true
+          schema:
+            type: string
+      tags:
+        - "Customer API"
+      responses:
+        '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Customer' 
+        '500':
+            description: Internal Server Error
         '400':
-          description: Invalid Request
-          
+            description: Bad Request
+        '404':
+            description: Not Found            
+
+
 components:
   schemas:
     Customer:
-      description: This is a customer model
+      description: This is a customer schema
       type: object
       required:
-        - "customerId"
+        - "customerId" 
       properties:
         customerId:
           type: string
-          description: "Id of the customer"
+          description: Id of the customer
           example: 12345
           minLength: 5
           maxLength: 8
         customerName:
           type: string
-          description: Name of the customer
-          example: Jessica Alba
+          description: Name of the customer (firstname/lastname)
+          example: Rahul Anand
         customerAddress:
           type: string
-          description: Customer address
-          example: 900 Main Street, 55 
+          description: Address of the customer
+          example: Hartford, CT 
+        officeCode:
+          type: integer
+          description: customer's office code
+          example: 714  

@@ -19,10 +19,10 @@ This is a quick reference guide with step by step instructions on how you can se
 
 ### **`Application Deployment`**
 
-* Namespace for istio system is already create  with name - ```acc-trainings-main-istio-system```
-* Participants will deploy Customer-api and Policy-api in allocated namespaces from ```acc-trainings-pod01``` to  ```acc-trainings-pod05```
-* Customer service is deployed using Deployments configuration in application namespace
-* Version 1 of Policy Service is deployed using Deployments configuration in application namespace
+* Create namespace for istio system by using command - ```oc new-project acc-trainings-istio-system-<your first name>```
+* Create namespace for applications by using command - ``` oc new-project acc-trainings-<your first name>```
+* Customer service will be deployed using Deployments configuration in application namespace
+* Version 1 of Policy Service will be deployed using Deployments configuration in application namespace
 
 ## Exercise 1 - Installing Service Mesh
 
@@ -31,14 +31,14 @@ To install service mesh, we will be using OpenShift CLI. Follow steps to login t
 ### **`Login to cluster using OpenShift CLI`**
 
 * open command prompt and change directory to location where OpenShift CLI is downloaded.
-* Login to OpenShift cluster by [clicking here](https://console-openshift-console.apps.azureneocp.neinnovation-ocp.com) 
-* Select oktaidp to login and provide User Name and Password used to setup Okta account.
+* Login to OpenShift cluster by [clicking here](https://console-openshift-console.apps.aro.neion.net) 
+* Enter Username and password provided during training.
 * Click top right corner on arrow next to your name and click "Copy Login Command".
-        ![Copy Login Command](https://github.com/acc-trainings/SpringBoot-OpenShift-Training/blob/6.service-mesh/img/CopyLoginCommand.JPG?raw=true)
+        ![Copy Login Command](https://github.com/acc-trainings-org/SpringBoot-OpenShift-Training/blob/6.service-mesh/img/CopyLoginCommand.JPG?raw=true)
 * Click on Oktaidp again, this will take you to the page with "Display Token" link on the screen.
-        ![Display Token](https://github.com/acc-trainings/SpringBoot-OpenShift-Training/blob/6.service-mesh/img/DisplayToken.JPG?raw=true)
+        ![Display Token](https://github.com/acc-trainings-org/SpringBoot-OpenShift-Training/blob/6.service-mesh/img/DisplayToken.JPG?raw=true)
 * Click display token and then copy whole command under "Log in with this token"
-        ![LogInToken](https://github.com/acc-trainings/SpringBoot-OpenShift-Training/blob/6.service-mesh/img/LogInToken.JPG?raw=true)
+        ![LogInToken](https://github.com/acc-trainings-org/SpringBoot-OpenShift-Training/blob/6.service-mesh/img/LogInToken.JPG?raw=true)
 * Paste it on OC CLI and hit enter
 
 ### **`Install Operators`**
@@ -47,10 +47,10 @@ The Service Mesh installation process uses the OperatorHub to install the Servic
 
 Starting with Red Hat OpenShift Service Mesh, you must install the Elasticsearch Operator, the Jaeger Operator, and the Kiali Operator before the Red Hat OpenShift Service Mesh Operator can install the control plane.
 
-All the Operators will be installed as part of project creation. Please confim that istio system project:  ```acc-trainings-main-istio-system``` has all the operators in ready state.
+All the Operators will be installed as part of project creation. Please confim that istio system project:  ```acc-trainings-istio-system-<your first name>``` has all the operators in ready state.
 
 You should see following screen in OpenShift console where all operators are installed state.
-      ![InstalledOperators](https://github.com/acc-trainings/SpringBoot-OpenShift-Training/blob/6.service-mesh/img/OperatorsInstalled.JPG)
+      ![InstalledOperators](https://github.com/acc-trainings-org/SpringBoot-OpenShift-Training/blob/6.service-mesh/img/OperatorsInstalled.JPG)
 
 ### **`Deploying the Red Hat OpenShift Service Mesh control plane`**  
 
@@ -59,20 +59,20 @@ To install servicemesh control plane, follow below procedures:
 * If project is not created, you can create by running following command which will install all required operators as well.
 
    ```javascript
-   oc new-project acc-trainings-main-istio-system
+   oc new-project acc-trainings-istio-system-<your first name>
    ```
 
 * Create a ServiceMeshControlPlane file named istio-servicemeshmemberroll-default.yaml. [Click here](https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-ServiceMeshControlPlane-installation.yaml) for location. You can customize the values as needed to match your use case.
 * Run the following command to deploy the control plane:
 
    ```javascript
-   oc create -n acc-trainings-main-istio-system -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-ServiceMeshControlPlane-installation.yaml
+   oc create -n acc-trainings-istio-system-<your first name> -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-ServiceMeshControlPlane-installation.yaml
    ```
 
 * Execute the following command to see the status of the control plane installation.
 
    ```javascript
-   oc get smcp -n acc-trainings-main-istio-system
+   oc get smcp -n acc-trainings-istio-system-<your first name>
    ```
 
   The installation has finished successfully when the READY column is completed.
@@ -87,7 +87,7 @@ To install servicemesh control plane, follow below procedures:
 * Run the following command to watch the progress of the Pods during the installation process:
 
    ```javascript
-   oc get pods -n acc-trainings-main-istio-system -w
+   oc get pods -n acc-trainings-istio-system-<your first name> -w
     ```
 
   Examlpe output
@@ -111,7 +111,7 @@ To install servicemesh control plane, follow below procedures:
 
 Follow this procedure to add a project to the ServiceMeshMemberRoll from the command line.
 
-* Create a ServiceMeshMemberRoll resource in the same project as the ServiceMeshControlPlane resource, in our example that is ```acc-trainings-main-istio-system ```.
+* Create a ServiceMeshMemberRoll resource in the same project as the ServiceMeshControlPlane resource, in our example that is ```acc-trainings-istio-system-<your first name> ```.
 * Create Service memberRoll by adding from web Console
 * Click on Installed Operators for your Project and then click Service Mesh Operator
         ![Copy Login Command](https://github.com/acc-trainings-org/SpringBoot-CloudNative-Training/blob/6.service-mesh/img/MemberRoll.JPG?raw=true)
@@ -128,7 +128,7 @@ Follow this procedure to add a project to the ServiceMeshMemberRoll from the com
 * Alternatively, copy YAML file form [here](https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-servicemeshmemberroll-default.yaml), add member name and run the following command to apply member roll:
 
    ```javascript
-   oc create -n acc-trainings-main-istio-system -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-servicemeshmemberroll-default.yaml
+   oc create -n acc-trainings-istio-system-<your first name> -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/istio-servicemeshmemberroll-default.yaml
    ```
 
 ### **`Creating Istio Gateway`** 
@@ -137,34 +137,10 @@ Follow this procedure to add a project to the ServiceMeshMemberRoll from the com
 
 * Run the following command to apply gateway:
 
-** For main namespace
    ```javascript
-   oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/acctrainings-gateway.yaml
-   ```
 
-** For pod01 namespace
-   ```javascript
-   oc apply -n acc-trainings-pod01 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod01/Excercise%20-%201%20-%20Installing%20Service%20Mesh/acctrainings-gateway.yaml
-   ```
-   
-** For pod02 namespace
-   ```javascript
-   oc apply -n acc-trainings-pod02 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod02/Excercise%20-%201%20-%20Installing%20Service%20Mesh/acctrainings-gateway.yaml
-   ```
-   
-** For pod03 namespace
-   ```javascript
-   oc apply -n acc-trainings-pod03 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod03/Excercise%20-%201%20-%20Installing%20Service%20Mesh/acctrainings-gateway.yaml
-   ```
-   
-** For pod04 namespace
-   ```javascript
-   oc apply -n acc-trainings-pod4 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod04/Excercise%20-%201%20-%20Installing%20Service%20Mesh/acctrainings-gateway.yaml
-   ```
-   
-** For pod05 namespace
-   ```javascript
-   oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/Excercise%20-%201%20-%20Installing%20Service%20Mesh/acctrainings-gateway.yaml
+   oc apply -n acc-trainings-<your first name> -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/acctrainings-gateway.yaml
+
    ```
    
 #### **`Customer API Deployment`**
@@ -179,80 +155,18 @@ In order to move forward with service mesh, we will need Customer-api and policy
 
 * Run the following command to deploy customer api:
 
-** For main namespace
 ```javascript
-oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/API%20Deployments%20Configs/customer-api.yaml
+oc apply -n acc-trainings-<your first name> -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/API%20Deployments%20Configs/customer-api.yaml
 ```
-
-** For pod01 namespace
-```javascript
-oc apply -n acc-trainings-pod01 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod01/API%20Deployments%20Configs/customer-api.yaml
-```
-    
-** For pod02 namespace
-```javascript
- oc apply -n acc-trainings-pod02 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod02/API%20Deployments%20Configs/customer-api.yaml
-```
-    
- ** For pod03 namespace
- 
- ```javascript
- oc apply -n acc-trainings-pod03 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod03/API%20Deployments%20Configs/customer-api.yaml
- ```
-    
- ** For pod04 namespace
-  
- ```javascript
- oc apply -n acc-trainings-pod04 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod04/API%20Deployments%20Configs/customer-api.yaml
- ```
-    
- ** For pod05 namespace
-  
- ```javascript
- oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/API%20Deployments%20Configs/customer-api.yaml
- ```
 
 #### **`Policy API Deployment`**
 
 * Look at the config [here](https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/API%20Deployments%20Configs/policy-api-v1.yaml)
 * Run the following command to deploy policy api:
 
-** For main namespace
-
 ```javascript
-oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/API%20Deployments%20Configs/policy-api-v1.yaml
-```
-    
-** For pod01 namespace
-
-```javascript
-oc apply -n acc-trainings-pod01 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod01/API%20Deployments%20Configs/policy-api-v1.yaml
-```
-  
-** For pod02 namespace
-
-```javascript
-oc apply -n acc-trainings-pod02 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod02/API%20Deployments%20Configs/policy-api-v1.yaml
-```
-    
-** For pod03 namespace
-
-```javascript
-oc apply -n acc-trainings-pod03 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod03/API%20Deployments%20Configs/policy-api-v1.yaml
-```
-  
-** For pod04 namespace
-
-```javascript
-oc apply -n acc-trainings-pod04 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod04/API%20Deployments%20Configs/policy-api-v1.yaml
-```
-    
-** For pod05 namespace
-
-```javascript
-oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/API%20Deployments%20Configs/policy-api-v1.yaml
-```
-   
+oc apply -n acc-trainings-<your first name> -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/API%20Deployments%20Configs/policy-api-v1.yaml
+``` 
 
 ### **`Inject Side Car`**
 
@@ -275,41 +189,9 @@ oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainin
         
 * Run the following command to apply Virtual Service:
 
-** For main namespace
-
 ```javascript
-oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/customer-api-virtual-service.yaml
+oc apply -n acc-trainings-<your first name> -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/customer-api-virtual-service.yaml
 ```
-
-** For pod01 namespace
-
-```javascript
-oc apply -n acc-trainings-pod01 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod01/Excercise%20-%201%20-%20Installing%20Service%20Mesh/customer-api-virtual-service.yaml
-```
-    
- ** For pod02 namespace
- 
-```javascript
-oc apply -n acc-trainings-pod02 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod02/Excercise%20-%201%20-%20Installing%20Service%20Mesh/customer-api-virtual-service.yaml
-```
-    
- ** For pod03 namespace
- 
-```javascript
- oc apply -n acc-trainings-pod03 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod03/Excercise%20-%201%20-%20Installing%20Service%20Mesh/customer-api-virtual-service.yaml
- ```
-    
- ** For pod04 namespace
- 
- ```javascript
- oc apply -n acc-trainings-pod04 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod04/Excercise%20-%201%20-%20Installing%20Service%20Mesh/customer-api-virtual-service.yaml
- ```
-    
- ** For pod05 namespace
- 
- ```javascript
- oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/Excercise%20-%201%20-%20Installing%20Service%20Mesh/customer-api-virtual-service.yaml
- ```
 
 #### **`Virtual Service for Policy API`**
 
@@ -317,40 +199,9 @@ oc apply -n acc-trainings-pod02 -f https://raw.githubusercontent.com/acc-trainin
         
 * Run the following command to apply Virtual Service:
 
-** For main namespace
-
  ```javascript
- oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/policy-api-virtual-service.yaml
+ oc apply -n acc-trainings-<your first name> -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%201%20-%20Installing%20Service%20Mesh/policy-api-virtual-service.yaml
  ```
-
-** For pod01 namespace
-
- ```javascript
- oc apply -n acc-trainings-pod01 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod01/Excercise%20-%201%20-%20Installing%20Service%20Mesh/policy-api-virtual-service.yaml
- ```
-    
-** For pod02 namespace
-
- ```javascript
- oc apply -n acc-trainings-pod02 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod02/Excercise%20-%201%20-%20Installing%20Service%20Mesh/policy-api-virtual-service.yaml
- ```
-    
-** For pod03 namespace
-
- ```javascript
- oc apply -n acc-trainings-pod03 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod03/Excercise%20-%201%20-%20Installing%20Service%20Mesh/policy-api-virtual-service.yaml
- ```
-    
-** For pod4 namespace
-```javascript
-oc apply -n acc-trainings-pod04 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod04/Excercise%20-%201%20-%20Installing%20Service%20Mesh/policy-api-virtual-service.yaml
-```
-    
- ** For pod05 namespace
- 
-```javascript
-oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/Excercise%20-%201%20-%20Installing%20Service%20Mesh/policy-api-virtual-service.yaml
-```
         
 * Test with istio gateway path
 
@@ -371,42 +222,10 @@ For this session, we will focus on Load balancing, Network resilience and testin
 
 * Run the following command to deploy policy-api-v2:
 
-** For main namespace
-
 ```javascript
-oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%202%20-%20Load%20Balancing/policy-api-v2.yaml
+oc apply -n acc-trainings-<your first name> -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%202%20-%20Load%20Balancing/policy-api-v2.yaml
 ```
     
-** For pod01 namespace
-
-```javascript
-oc apply -n acc-trainings-pod01 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod01/Excercise%20-%202%20-%20Load%20Balancing/policy-api-v2.yaml
-```
-    
-** For pod02 namespace
-
-```javascript
-oc apply -n acc-trainings-pod02 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod02/Excercise%20-%202%20-%20Load%20Balancing/policy-api-v2.yaml
-```
-    
-** For pod03 namespace
-
-```javascript
-oc apply -n acc-trainings-pod03 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod03/Excercise%20-%202%20-%20Load%20Balancing/policy-api-v2.yaml
-```
-    
-** For pod04 namespace
-
-```javascript
-oc apply -n acc-trainings-pod04 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod04/Excercise%20-%202%20-%20Load%20Balancing/policy-api-v2.yaml
-```
-    
-** For pod05 namespace
-
-```javascript
-oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/Excercise%20-%202%20-%20Load%20Balancing/policy-api-v2.yaml
-```
-
 * Start refresing browser to see V1 and V2 of the policy service bringing data alternativly, this is default Round Robin behaviour for load balancing.
 
 ### **`Apply Destination Rule`**
@@ -415,42 +234,10 @@ oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainin
 * Look at the config [here](https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%202%20-%20Load%20Balancing/policy-service-destination-rule.yaml)
 * Run the following command to deploy destination rule:
 
-** For main namespace
-
 ```javascript
-oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%202%20-%20Load%20Balancing/policy-service-destination-rule.yaml
+oc apply -n acc-trainings-<your first name> -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%202%20-%20Load%20Balancing/policy-service-destination-rule.yaml
 ```
     
-** For pod01 namespace
-
-```javascript
-oc apply -n acc-trainings-pod01 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod01/Excercise%20-%202%20-%20Load%20Balancing/policy-service-destination-rule.yaml
-```
-    
-** For pod02 namespace
-
-```javascript
-oc apply -n acc-trainings-pod02 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod02/Excercise%20-%202%20-%20Load%20Balancing/policy-service-destination-rule.yaml
-```
-    
-** For pod03 namespace
-
-```javascript
-oc apply -n acc-trainings-pod03 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod03/Excercise%20-%202%20-%20Load%20Balancing/policy-service-destination-rule.yaml
-```
-    
-** For pod04 namespace
-
-```javascript
-oc apply -n acc-trainings-pod04 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod04/Excercise%20-%202%20-%20Load%20Balancing/policy-service-destination-rule.yaml
-```
-    
-** For pod05 namespace
-
-```javascript
-oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/Excercise%20-%202%20-%20Load%20Balancing/policy-service-destination-rule.yaml
-```
-
 * Start refresing browser to see V1 and V2 of the policy service bringing data randomly.
 
 ## **`Weighted Load Balancing`**
@@ -464,20 +251,20 @@ oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainin
             gateways:
                 - acctrainings-gateway
             hosts:
-                - '*.apps.azureneocp.neinnovation-ocp.com'
+                - '*.apps.aro.neion.net'
             http:
                 - match:
                     - uri:
-                        prefix: /api/main/policy
+                        prefix: /policy
                 route:
                     - destination:
-                        host: policy-api-main
+                        host: policy-api
                         port:
                         number: 8080
                         subset: v1
                     weight: 80
                     - destination:
-                        host: policy-api-main
+                        host: policy-api
                         port:
                         number: 8080
                         subset: v2
@@ -486,40 +273,8 @@ oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainin
 
 * Alternativey delete ```policy-api-virtual-service``` and run following command to add new virtual service
 
-** For main namespace
-
 ```javascript
-oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%202%20-%20Load%20Balancing/policy-service-virtual-weighted-load-balancing.yaml
-```
-
-** For pod01 namespace
-
-```javascript
-oc apply -n acc-trainings-pod01 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod01/Excercise%20-%202%20-%20Load%20Balancing/policy-service-virtual-weighted-load-balancing.yaml
-```
-
-** For pod02 namespace
-
-```javascript
-oc apply -n acc-trainings-pod02 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod02/Excercise%20-%202%20-%20Load%20Balancing/policy-service-virtual-weighted-load-balancing.yaml
-```
-
-** For pod03 namespace
-
-```javascript
-oc apply -n acc-trainings-pod03 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod03/Excercise%20-%202%20-%20Load%20Balancing/policy-service-virtual-weighted-load-balancing.yaml
-```
-
-** For pod04 namespace
-
-```javascript
-oc apply -n acc-trainings-pod04 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod04/Excercise%20-%202%20-%20Load%20Balancing/policy-service-virtual-weighted-load-balancing.yaml
-```
-
-** For pod05 namespace
-
-```javascript
-oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/Excercise%20-%202%20-%20Load%20Balancing/policy-service-virtual-weighted-load-balancing.yaml
+oc apply -n acc-trainings-<your first name> -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%202%20-%20Load%20Balancing/policy-service-virtual-weighted-load-balancing.yaml
 ```
 
 * Edit policy-api destination rules to remove trafficPolicy
@@ -542,34 +297,8 @@ oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainin
 
 * Run the following command to apply fault injection configuration:
 
-** For main namespace
 ```javascript
-oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/customer-service-virtual-service-fault-injection.yaml
-```
-
-** For pod01 namespace
-```javascript
-oc apply -n acc-trainings-pod01 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod01/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/customer-service-virtual-service-fault-injection.yaml
-```
-
-** For pod02 namespace
-```javascript
-oc apply -n acc-trainings-pod02 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod02/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/customer-service-virtual-service-fault-injection.yaml
-```
-
-** For pod03 namespace
-```javascript
-oc apply -n acc-trainings-pod03 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod03/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/customer-service-virtual-service-fault-injection.yaml
-```
-
-** For pod04 namespace
-```javascript
-oc apply -n acc-trainings-pod04 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod04/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/customer-service-virtual-service-fault-injection.yaml
-```
-
-** For pod05 namespace
-```javascript
-oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/customer-service-virtual-service-fault-injection.yaml
+oc apply -n acc-trainings-<your first name> -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/customer-service-virtual-service-fault-injection.yaml
 ```
 
 * Start refresing browser for customer-api to see 7s delay in response.
@@ -579,7 +308,7 @@ oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainin
     ```javascript
             spec:
             hosts:
-            - customer-api-main
+            - customer-api
             http:
             - fault:
                 delay:
@@ -588,7 +317,7 @@ oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainin
                     value: 100
                 route:
                 - destination:
-                    host: customer-api-main
+                    host: customer-api
     ```
 
 * Refresh Customer-api browser
@@ -607,34 +336,8 @@ oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainin
 
 * Alternativey delete ```policy-api-virtual-service``` and run following command to add new virtual service with timeout and retry configuration
 
-** For main namespace
 ```javascript
-oc apply -n acc-trainings -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/Policy-service-virtual-service-timeout.yaml
-```
-
-** For pod01 namespace
-```javascript
-oc apply -n acc-trainings-pod01 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod01/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/Policy-service-virtual-service-timeout.yaml
-```
-
-** For pod02 namespace
-```javascript
-oc apply -n acc-trainings-pod02 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod02/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/Policy-service-virtual-service-timeout.yaml
-```
-
-** For pod03 namespace
-```javascript
-oc apply -n acc-trainings-pod03 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod03/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/Policy-service-virtual-service-timeout.yaml
-```
-
-** For pod04 namespace
-```javascript
-oc apply -n acc-trainings-pod04 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod04/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/Policy-service-virtual-service-timeout.yaml
-```
-
-** For pod05 namespace
-```javascript
-oc apply -n acc-trainings-pod05 -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/pod05/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/Policy-service-virtual-service-timeout.yaml
+oc apply -n acc-trainings-<your first name> -f https://raw.githubusercontent.com/acc-trainings-org/Configurations/main/Excercise%20-%203%20-%20Network%20resilience%20and%20Fault%20Injection/Policy-service-virtual-service-timeout.yaml
 ```
 
 * You will observe policy-api will timeout as we have delayed customer-api call by 7 second

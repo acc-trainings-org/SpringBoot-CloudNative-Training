@@ -6,7 +6,7 @@ This is a quick reference guide to understand usages of key components & capabil
 ![Software Development Lifecycle](https://github.com/acc-trainings-org/SpringBoot-CloudNative-Training/blob/main/img/sdlc.png?raw=true)
 
 
-## Training Schedule (**`2022-01-10 - 2022-01-17`**)
+## Training Schedule (**`2022-06-13 - 2022-06-17`**)
 * Day 1. Business Context, Microservices, Use Case, [API First Development](https://github.com/acc-trainings-org/SpringBoot-CloudNative-Training/tree/1.api-first-development)
 * Day 2. Spring Boot Basics, [Spring Boot Development](https://github.com/acc-trainings-org/SpringBoot-CloudNative-Training/tree/2.spring-api-development)
 * Day 3. Mongo DB Basics, [Spring Boot - Maven Development](https://github.com/acc-trainings-org/SpringBoot-CloudNative-Training/tree/3.spring-mongodb-development)
